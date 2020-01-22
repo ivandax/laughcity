@@ -1,0 +1,79 @@
+@import '../../style/variables.scss';
+@import '../../style/mixins.scss';
+
+.welcome{
+    @include flex-complete($direction: row, $justify: center, $align: flex-start);
+
+    background-color: $main;
+    height: 100vh;
+    padding-top: 8px;
+    margin:0;
+
+    form{
+
+        border-radius: 8px;
+        height: 232px;
+        width: 232px;
+
+        position: absolute;
+        top:120px;
+
+        input{
+            padding: 8px;
+            margin: 8px;
+            border: none;
+            width: 200px;
+        }
+
+        button{
+            border: none;
+            background-color: $main;
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            color:white;
+            margin-bottom: 4px;
+        }
+
+        div{
+            @include flex-complete($direction: row, $justify: space-between, $align: flex-start);
+            
+            div{
+                padding: 8px;
+                width: 116px;
+                @include flex-complete($direction: row, $justify: center, $align: center);
+            }
+        }
+
+    }
+}
+
+.signIn{
+    background-color: greenyellow;
+    @include flex-complete($direction: column, $justify: flex-start, $align: center);
+
+}
+
+.signInLink{
+    background-color: greenyellow;
+    border-radius: 8px 0 0 0;
+}
+
+.signUp{
+    background-color: goldenrod;
+    @include flex-complete($direction: column, $justify: flex-start, $align: center);
+
+}
+
+.signUpLink{
+    background-color: goldenrod;
+    border-radius: 0 8px 0 0;
+}
+
+.display{
+    z-index:5;
+}
+
+.brand{
+    margin-top: 50px;
+}
