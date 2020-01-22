@@ -1,3 +1,11 @@
+
+npx create-react-app
+npm install node-sass
+npm install --save react-router-dom
+npm install --save redux react-redux
+npm install --save firebase
+npm install -g firebase-tools (for deploy)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
