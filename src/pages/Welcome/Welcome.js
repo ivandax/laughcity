@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import { signup } from '../../services/auth';
+import { signup, login, registerAuthObserver } from '../../services/auth';
+import { addItemWithId, getItem } from '../../services/database';
 
 import FormInput from '../../components/FormInput';
 import Brand from '../../components/Brand';
 
 import './Welcome.scss';
+
+let cancelObserver;
 
 const Welcome = ({history}) => {
 
@@ -14,14 +17,40 @@ const Welcome = ({history}) => {
     const [signUpData, setSignUpData] = useState({name:'',email:'',password:''});
     const [error, setError] = useState('');
 
+    useEffect(()=>{
+        if(cancelObserver) cancelObserver();
+
+        cancelObserver = registerAuthObserver(async(user)=>{
+            if(user){
+                console.log('user is', user);
+                const profile = await getItem('profiles', user.uid);
+                if(!profile){
+                    const result = await addItemWithId(
+                        'profiles',
+                        {
+                            name: signUpData.name,
+                            email: signUpData.email,
+                            event: 'Comedy Show 1'
+                        },
+                        user.uid
+                    );
+                    debugger
+                    result && history.push('/home');
+                }
+            }
+            else{
+                console.log("no user logged")
+            }
+        })
+
+        return () => {
+            cancelObserver();
+        }
+    }, [signUpData.email, signUpData.name, history]);
+
     const toggleDisplay = () => {
         const currentDisplay = [...display];
         setDisplay([currentDisplay[1] , currentDisplay[0]]);
-    }
-
-    const handleLogIn = (event) => {
-        event.preventDefault();
-        console.log("attempted to login")
     }
 
     const handleSignUp = (event) => {
@@ -29,12 +58,28 @@ const Welcome = ({history}) => {
         setError('');
         
         const {name,email,password} = signUpData;
-        console.log(name,email,password);
+        console.log(name,email);
 
         if(!name || !email || !password){
             setError("All fields are required!");
         } else{
+            console.log("signing up -> "+signUpData)
+            debugger
             signup(email, password)
+        }
+    }
+
+    const handleLogIn = (event) => {
+        event.preventDefault();
+        setError('');
+        
+        const {email,password} = loginData;
+        console.log(email);
+
+        if(!email || !password){
+            setError("All fields are required!");
+        } else{
+            login(email, password)
         }
     }
 

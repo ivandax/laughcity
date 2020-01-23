@@ -15,8 +15,14 @@ function registerAuthObserver(callback) {
     return firebase.auth().onAuthStateChanged(callback);
 }
 
+async function login(email,password){
+    const result = await firebase.auth().signInWithEmailAndPassword(email,password);
+    return result.user.uid; //returns true if successful
+}
+
 export {
     signup,
     logout,
+    login,
     registerAuthObserver
 }
