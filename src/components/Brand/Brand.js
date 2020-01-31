@@ -4,7 +4,10 @@ import './Brand.scss';
 
 const Brand = () => {
     return(
-        <div className="brand">CherryPeach</div>
+        <div className="brand">
+            <span>Cherry</span>
+            <span className="peach">Peach</span>
+        </div>
     )
 }
 

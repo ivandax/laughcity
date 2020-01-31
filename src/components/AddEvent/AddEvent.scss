@@ -1,0 +1,50 @@
+@import '../../style/variables.scss';
+@import '../../style/mixins.scss';
+
+.addEvent{
+    @include flex-complete($direction: column, $justify: flex-start, $align: center);
+
+    button{
+        @include flex-complete($direction: row, $justify: center, $align: center);
+        border: solid 4px $secondary;
+        width:97.5%;
+        height: 50px;
+        background-color: white;
+        margin: 4px;
+        border-radius: 25px;
+    }
+
+    form{
+        @include flex-complete($direction: column, $justify: flex-start, $align: flex-start);
+        width:90%;
+
+        input{
+            padding: 8px;
+            margin: 4px;
+            border: solid 2px $secondary;
+            border-radius: 4px;
+        }
+
+        label{
+            padding:4px;
+            color:$secondary;
+        }
+
+        select{
+            margin: 4px;
+            padding: 8px;
+            border: solid 2px $secondary;
+            border-radius: 4px;
+        }
+    }
+
+}
+
+#titleInput{
+    width:100%;
+    margin-bottom:8px;
+}
+
+.doubleBlock{
+    @include flex-complete($direction: row, $justify: space-evenly, $align: flex-start); 
+}

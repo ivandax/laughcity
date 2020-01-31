@@ -30,12 +30,14 @@ const Welcome = ({history}) => {
                         {
                             name: signUpData.name,
                             email: signUpData.email,
-                            event: 'Comedy Show 1'
+                            eventNames: [],
+                            homiesNames: []
                         },
                         user.uid
                     );
-                    debugger
                     result && history.push('/home');
+                } else{
+                    history.push('/home');
                 }
             }
             else{
@@ -64,7 +66,6 @@ const Welcome = ({history}) => {
             setError("All fields are required!");
         } else{
             console.log("signing up -> "+signUpData)
-            debugger
             signup(email, password)
         }
     }
