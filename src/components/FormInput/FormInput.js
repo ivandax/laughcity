@@ -1,10 +1,9 @@
 import React from 'react';
 
-const FormInput = ({value,onChange,type="text",placeholder, maxLength='40',idstring=''}) => {
+const FormInput = ({value,onChange,type="text",placeholder, maxLength='40'}) => {
     return(
         <input 
             placeholder={placeholder}
-            id={idstring}
             type={type} 
             value={value} 
             maxLength={maxLength}

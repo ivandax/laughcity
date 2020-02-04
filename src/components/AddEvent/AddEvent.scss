@@ -23,28 +23,66 @@
             margin: 4px;
             border: solid 2px $secondary;
             border-radius: 4px;
+            height: 40px;
+            width: 300px;
         }
 
-        label{
-            padding:4px;
-            color:$secondary;
+        button{
+            width:150px;
+            background-color: $secondary;
+            color:white;
+            font-weight: bold;
+            align-self: flex-end;
         }
 
-        select{
-            margin: 4px;
-            padding: 8px;
-            border: solid 2px $secondary;
-            border-radius: 4px;
+        div{
+
+            input{
+                width: 200px;                
+            }
+
+            select{
+                height: 40px;
+                width:100px;
+                margin: 4px;
+                padding: 8px;
+                border: solid 2px $secondary;
+                border-radius: 4px;
+            }
+    
+            label{
+                padding:4px;
+                color:$secondary;
+            }
+
         }
     }
 
 }
 
-#titleInput{
-    width:100%;
-    margin-bottom:8px;
-}
 
 .doubleBlock{
     @include flex-complete($direction: row, $justify: space-evenly, $align: flex-start); 
+}
+
+.participantBox{
+    @include flex-complete($direction: column, $justify: flex-start, $align: flex-start);
+    
+    div{
+        @include flex-complete($direction: row, $justify: flex-start, $align: flex-start);
+        
+    }
+}
+
+.add{
+    padding: 8px;
+    margin: 4px;
+    border: solid $secondary;
+    background-color: lightgrey;
+    border-radius: 4px;
+}
+
+.personItem{
+    margin: 4px;
+    padding: 4px;
 }
