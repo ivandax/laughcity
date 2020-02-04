@@ -22,14 +22,6 @@ const AddEvent = () => {
         console.log("trying to submit");
     }
 
-    const buildArray = (array, value) => {
-        if(array){
-            return [...array.slice(0,array.length-1), value]
-        }else{
-            return array
-        }
-    }
-
     console.log(eventData)
     console.log(participant)
 
@@ -76,7 +68,10 @@ const AddEvent = () => {
                             value={participant}
                             onChange={value => setParticipant(value)}
                         />
-                        <div className="add" onClick={()=>{participant && setEventData({...eventData, participants : [...eventData.participants, participant]})}}>Add</div>                        
+                        <div className="add" onClick={()=>{
+                            participant && setEventData({...eventData, participants : [...eventData.participants, participant]})
+                            setParticipant('');
+                            }}>Add</div>                        
 
                     </div>
                 </div>
