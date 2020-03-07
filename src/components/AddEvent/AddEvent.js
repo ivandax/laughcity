@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import FormInput from '../FormInput';
+import Participant from '../Participant';
 
 import './AddEvent.scss';
 
@@ -17,13 +18,21 @@ const AddEvent = () => {
 
     const [participant, setParticipant] = useState('');
 
+    const deleteParticipant = (index) => {
+        const {participants} = {...eventData};
+        console.log(participants)
+        if(participants.length){
+            participants.splice(index, 1);
+            setEventData({...eventData, participants})
+        }
+    }
+
     const submitEvent = (event) => {
         event.preventDefault();
         console.log("trying to submit");
     }
 
     console.log(eventData)
-    console.log(participant)
 
     return (
         <div className="addEvent">
@@ -57,12 +66,6 @@ const AddEvent = () => {
                 <div className="participantBox">
                     <label>Participants</label>
                     <div>
-                        {/* <FormInput 
-                            placeholder="Participant's name" 
-                            value={eventData.participants[eventData.participants.length]}
-                            onChange={value => setEventData({...eventData, participants: buildArray(eventData.participants, value)})}
-                        />
-                        <button>Add</button>                         */}
                         <FormInput 
                             placeholder="Participant's name" 
                             value={participant}
@@ -77,7 +80,7 @@ const AddEvent = () => {
                 </div>
                 <div className="displayNames">
                     {eventData.participants && eventData.participants.map( (person, index) => {
-                    return <div className="personItem" key={person+index}>{`${index+1}) ${person}`}</div>
+                    return <Participant key={person+index} order={index+1} participantName={person} deleteParticipant={deleteParticipant}></Participant>
                     })}
                 </div>
                 <button type="submit">Create Event</button>

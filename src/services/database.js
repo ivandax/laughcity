@@ -34,5 +34,4 @@ async function getItem(collection, itemId) {
 export{
     addItemWithId,
     getItem,
-
 }
