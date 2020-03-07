@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import FormInput from '../FormInput';
 import Participant from '../Participant';
 
+import { validateAll, arrayIntoList } from '../../helpers/helpers';
+import { addItem } from '../../services/database';
+
 import './AddEvent.scss';
 
 const AddEvent = () => {
+
+    const profile = useSelector(state=>state.user);
 
     const [eventData, setEventData] = useState(
         {
@@ -15,24 +21,40 @@ const AddEvent = () => {
             participants: []
         }
     );
-
+    const [formError, setFormError] = useState('');
     const [participant, setParticipant] = useState('');
 
     const deleteParticipant = (index) => {
         const {participants} = {...eventData};
-        console.log(participants)
         if(participants.length){
             participants.splice(index, 1);
-            setEventData({...eventData, participants})
+            setEventData({...eventData, participants});
         }
+    }
+
+    const setEvent = async (dataObject) => {
+        const result = await addItem('events', dataObject);
+        result && console.log("event added!");
     }
 
     const submitEvent = (event) => {
         event.preventDefault();
-        console.log("trying to submit");
+        const validated = validateAll(eventData);
+        if(validated===true){
+            setFormError('');
+            const data = {
+                title: eventData.title,
+                date: eventData.date,
+                type: eventData.type,
+                participants: arrayIntoList(eventData.participants, eventData.type),
+                timestamp : +(new Date()),
+                host: profile.id
+            }
+            setEvent(data);
+        } else{
+            setFormError(validated[1]);
+        }
     }
-
-    console.log(eventData)
 
     return (
         <div className="addEvent">
@@ -40,6 +62,7 @@ const AddEvent = () => {
                 New Event
             </button>
             <form onSubmit={submitEvent}>
+                <div className="formError">{formError}</div>
                 <FormInput
                     placeholder="Title"
                     value={eventData.title}

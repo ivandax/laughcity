@@ -31,7 +31,14 @@ async function getItem(collection, itemId) {
     return null;
 }
 
+async function addItem(collection, item) {
+    const db = getDbInstance();
+    const result = await db.collection(collection).add(item)
+    return !!result.id;
+}
+
 export{
     addItemWithId,
+    addItem,
     getItem,
 }
