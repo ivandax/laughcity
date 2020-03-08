@@ -37,8 +37,20 @@ async function addItem(collection, item) {
     return !!result.id;
 }
 
+async function getAllRealTime({ collection, filters, order, callback}){
+    const db = getDbInstance();
+    const dbCollection = db.collection(collection);
+    const collectionFiltered = dbCollection.where(filters.field, filters.condition, filters.value);
+    const collectionOrdered = collectionFiltered.orderBy(order, "desc");
+    const execute = (collectionData) => {
+        callback(collectionData)
+    }
+    collectionOrdered.onSnapshot(execute);
+}
+
 export{
     addItemWithId,
     addItem,
     getItem,
+    getAllRealTime
 }

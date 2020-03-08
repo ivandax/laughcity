@@ -23,6 +23,7 @@ const AddEvent = () => {
     );
     const [formError, setFormError] = useState('');
     const [participant, setParticipant] = useState('');
+    const [formDisplay, setFormDisplay] = useState('noShow')
 
     const deleteParticipant = (index) => {
         const {participants} = {...eventData};
@@ -34,7 +35,11 @@ const AddEvent = () => {
 
     const setEvent = async (dataObject) => {
         const result = await addItem('events', dataObject);
-        result && console.log("event added!");
+        if(result){
+            console.log("event added!");
+            setEventData({title:'',date:'',type:'Favorite',participants: []}); //resets form data
+            setFormDisplay('noShow'); //hides the form until user wants to add more
+        }
     }
 
     const submitEvent = (event) => {
@@ -48,7 +53,9 @@ const AddEvent = () => {
                 type: eventData.type,
                 participants: arrayIntoList(eventData.participants, eventData.type),
                 timestamp : +(new Date()),
-                host: profile.id
+                host: profile.id,
+                hostName: profile.name,
+                active: true
             }
             setEvent(data);
         } else{
@@ -58,10 +65,10 @@ const AddEvent = () => {
 
     return (
         <div className="addEvent">
-            <button>
+            <button onClick={()=>{formDisplay==="noShow" ? setFormDisplay('show') : setFormDisplay('noShow')}}>
                 New Event
             </button>
-            <form onSubmit={submitEvent}>
+            <form onSubmit={submitEvent} className={formDisplay}>
                 <div className="formError">{formError}</div>
                 <FormInput
                     placeholder="Title"
@@ -82,7 +89,7 @@ const AddEvent = () => {
                         <label>Rank Type</label>
                         <select value={eventData.type} onChange={event => setEventData({...eventData, type: event.target.value})}>
                             <option>Favorite</option>
-                            <option>Rank</option>
+                            {/* <option>Rank</option> */}
                         </select>                         
                     </div>              
                 </div>

@@ -33,6 +33,7 @@
             color:white;
             font-weight: bold;
             align-self: flex-end;
+            margin-top:20px;
         }
 
         div{
@@ -93,4 +94,16 @@
 
 .formError{
     color: red;
+}
+
+.noShow{
+    height:0;
+    overflow:hidden;
+    transition: height transform 1s ease-out;
+    
+}
+
+.show{
+    height: auto;
+    transition: height transform 1s ease-out;
 }
