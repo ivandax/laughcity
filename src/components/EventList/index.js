@@ -1,3 +1,3 @@
-import EventList from "./EvenList";
+import EventList from "./EventList";
 
 export default EventList;

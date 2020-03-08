@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 import { getAllRealTime } from '../../services/database';
 
+import EventCard from '../EventCard';
+
 import './EventList.scss';
 
-const EventList = ({userType, profile}) => {
+const EventList = ({userType}) => {
 
+    const profile = useSelector(state=>state.user);
+    console.log(profile)
     const [events, setEvents] = useState([]);
 
     useEffect( () => {
-        getAllRealTime({
+        ( profile && profile.id ) && getAllRealTime({
             collection: 'events',
             filters: {field: 'host', condition: '==', value: profile.id},
             order: 'timestamp',
@@ -23,11 +28,14 @@ const EventList = ({userType, profile}) => {
             }
         })
 
-    }, [])
+    }, [profile])
 
     return (
         <div className="eventList">
-            List
+            {events && 
+            events.map( (event) => {
+                return <EventCard key={event.timestamp+event.host} eventData={event}/>
+            })}
         </div>
     )
 }

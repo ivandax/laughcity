@@ -110,7 +110,7 @@ const AddEvent = () => {
                 </div>
                 <div className="displayNames">
                     {eventData.participants && eventData.participants.map( (person, index) => {
-                    return <Participant key={person+index} order={index+1} participantName={person} deleteParticipant={deleteParticipant}></Participant>
+                    return <Participant key={person+index} order={index+1} participantName={person} deleteParticipant={deleteParticipant} usage="delete"></Participant>
                     })}
                 </div>
                 <button type="submit">Create Event</button>

@@ -1,4 +1,4 @@
-function userReducer(state = [], action) {
+function userReducer(state = null, action) {
     switch(action.type) {
       case 'SET_USER': {
         return action.payload;
