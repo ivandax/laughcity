@@ -31,4 +31,24 @@
     div.participants{
         width: 95%;
     }
+
+    button{
+        padding: 4px;
+        border: none;
+        border-radius: 4px;
+        font-weight: bold;
+        align-self: flex-end;
+        margin: 4px;
+        margin-top: 16px;
+        color:white;
+        background-color: darkslategray;
+    }
+
+    button.eventDelete{
+        background-color: red;
+    }
+}
+
+.noShow{
+    display:none;
 }

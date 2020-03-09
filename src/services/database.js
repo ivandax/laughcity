@@ -48,9 +48,16 @@ async function getAllRealTime({ collection, filters, order, callback}){
     collectionOrdered.onSnapshot(execute);
 }
 
+async function deleteItem(collection, itemId) {
+    const db = getDbInstance();
+    const result = await db.collection(collection).doc(itemId).delete();
+    return !result;
+}
+
 export{
     addItemWithId,
     addItem,
     getItem,
-    getAllRealTime
+    getAllRealTime,
+    deleteItem
 }

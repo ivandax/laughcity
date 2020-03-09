@@ -1,7 +1,6 @@
 //validate the form inputs when creating an event.
 const validateAll = (formData) => {
     const {title,date,participants} = formData;
-    console.log(title,date,participants);
     if(title){
         if(date){
             if(participants.length){
@@ -17,11 +16,23 @@ const validateAll = (formData) => {
     }
 }
 
+//let trial = {'John':{count:0,order:2}, "Luke":{count:0,order:1}, "Mark":{count:0,order:0}}
+const orderObject = (object) => {
+    const sortable = [];
+    for (let element in object){
+        sortable.push([element, object[element].order]);
+    }
+    sortable.sort(function(a, b) {
+        return a[1] - b[1];
+    });
+    return sortable;
+}
+
 const arrayIntoList = (array, type) => {
     const dataObject = {};
     if(type==="Favorite"){
-        array.forEach( (elem) => {
-            dataObject[elem] = 0;
+        array.forEach( (elem,index) => {
+            dataObject[elem] = {count: 0, order: index};
         }) 
     }
     return dataObject;
@@ -29,5 +40,6 @@ const arrayIntoList = (array, type) => {
 
 export {
     validateAll,
-    arrayIntoList
+    arrayIntoList,
+    orderObject
 }

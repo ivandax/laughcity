@@ -8,7 +8,6 @@ const Participant = ({participantName, order, deleteParticipant,usage}) => {
         <div className="participant">
             <div>{`${order} - ${participantName}`}</div>
             {usage==='delete' && <div className="cancel" onClick={deleteParticipant}>✖</div>}
-            {usage==='display' && <div className="cancel">ok</div>}
         </div>
     )
 }

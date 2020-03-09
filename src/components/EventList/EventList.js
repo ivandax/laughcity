@@ -10,7 +10,6 @@ import './EventList.scss';
 const EventList = ({userType}) => {
 
     const profile = useSelector(state=>state.user);
-    console.log(profile)
     const [events, setEvents] = useState([]);
 
     useEffect( () => {
@@ -22,6 +21,7 @@ const EventList = ({userType}) => {
                 const results = [];
                 collectionData.forEach( (document) => {
                     const data = document.data();
+                    data['eventId'] = document.id;
                     results.push(data);
                 })
                 setEvents(results);  
