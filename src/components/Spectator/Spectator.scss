@@ -1,0 +1,18 @@
+@import '../../style/variables.scss';
+@import '../../style/mixins.scss';
+
+.spectator{
+    width:100%;
+    position: absolute;
+    transition-duration: 0.5s;
+}
+
+.spectator.showSpectator{
+    width:100%;
+    position: absolute;
+    left:0;
+}
+
+.spectator.showHost{
+    left: -100%;
+}

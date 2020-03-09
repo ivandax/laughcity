@@ -6,6 +6,7 @@ import { setUser } from '../../redux/userActions';
 import { getItem } from '../../services/database';
 
 import Host from '../../components/Host';
+import Spectator from '../../components/Spectator';
 
 import './Home.scss';
 
@@ -16,6 +17,7 @@ const Home = ({history}) => {
     const dispatch = useDispatch();
 
     const [isLoading, setIsLoading] = useState(true);
+    const [mainView, setMainView] = useState('showSpectator');
 
     const handleLogOut = () => {
         logout();
@@ -47,14 +49,17 @@ const Home = ({history}) => {
     return (
         <div className="home">
             <div className="homeOptions">
-                <div className="specOption">
+                <div className="specOption" onClick={()=>{setMainView('showSpectator')}}>
                     Spectator
                 </div>
-                <div className="hostOption">
+                <div className="hostOption" onClick={()=>{setMainView('showHost')}}>
                     Host
                 </div>
             </div>
-            <Host />
+            <div className="main">
+                <Spectator view={mainView}/>
+                <Host view={mainView}/>
+            </div>
             <div className="footer">
                 <button onClick={handleLogOut}>Log Out</button>                
             </div>

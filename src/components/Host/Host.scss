@@ -3,4 +3,14 @@
 
 .host{
     width:100%;
+    position: absolute;
+    transition-duration: 0.5s;
+}
+
+.host.showSpectator{
+    right: -100%;
+}
+
+.host.showHost{
+    right: 0;
 }
