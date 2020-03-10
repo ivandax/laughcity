@@ -9,7 +9,7 @@ const Host = ({view}) => {
     return (
         <div className={`host ${view}`}>
             <AddEvent />
-            <EventList userType="host"/>    
+            <EventList userType="hostCard"/>    
         </div>
     )
 }

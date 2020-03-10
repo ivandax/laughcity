@@ -7,7 +7,7 @@ import './Spectator.scss';
 const Spectator = ({view}) => {
     return (
         <div className={`spectator ${view}`}>
-            <EventList userType="spectator"/>
+            <EventList userType="spectatorCard"/>
         </div>
     )
 }

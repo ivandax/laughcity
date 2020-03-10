@@ -7,7 +7,7 @@ import Participant from '../Participant';
 
 import './EventCard.scss';
 
-const EventCard = ({eventData}) => {
+const EventCard = ({eventData, userType}) => {
 
     const [display, setDisplay] = useState('noShow');
 
@@ -16,10 +16,14 @@ const EventCard = ({eventData}) => {
         result && console.log("event deleted");
     }
 
+    const saveChanges = () => {
+        console.log("trying to save");
+    }
+
     console.log(eventData)
 
     return (
-        <div className="eventCard">
+        <div className={`eventCard ${userType}`}>
             <div className="title">
                 <div>
                     <h3>{eventData.title}</h3>
@@ -32,8 +36,15 @@ const EventCard = ({eventData}) => {
                     return <Participant key={elem[0]+elem[1]} order={elem[1]+1} participantName={elem[0]} deleteParticipant={()=>{return null}} usage=""/>
                 } )}
             </div>
-            <button onClick={()=>{display==='show' ? setDisplay('noShow') : setDisplay('show')}}>{display==='show' ? 'Sure about deleting?' : 'Delete'}</button>
-            <button className={`eventDelete ${display}`} onClick={deleteEvent}>Yeah, sure.</button>
+            {
+              userType==='hostCard' && //only shows for host card
+            <button onClick={()=>{display==='show' ? setDisplay('noShow') : setDisplay('show')}}>{display==='show' ? 'Sure about deleting?' : 'Delete'}</button> }
+            { userType==='hostCard' && (//only shows for host card
+              <button className={`eventDelete ${display}`} onClick={deleteEvent}>Yeah, sure.</button>)
+            }
+            { userType==='spectatorCard' && (//only shows for spectator card
+              <button className={``} onClick={saveChanges}>Save</button>)
+            }
         </div>
     )
 }

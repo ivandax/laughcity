@@ -13,20 +13,26 @@ const EventList = ({userType}) => {
     const [events, setEvents] = useState([]);
 
     useEffect( () => {
-        ( profile && profile.id ) && getAllRealTime({
-            collection: 'events',
-            filters: {field: 'host', condition: '==', value: profile.id},
-            order: 'timestamp',
-            callback: (collectionData) => {
-                const results = [];
-                collectionData.forEach( (document) => {
-                    const data = document.data();
-                    data['eventId'] = document.id;
-                    results.push(data);
-                })
-                setEvents(results);  
+        if( profile && profile.id ) { //this condition to make sure redux state already has the set user
+            const queries = {
+                'hostCard' : {field: 'host', condition: '==', value: profile.id}, //if displaying host...
+                'spectatorCard' : {field: 'timestamp', condition: '>', value: 0} //display all for spectator
             }
-        })
+            getAllRealTime({
+                collection: 'events',
+                filters: queries[userType],
+                order: 'timestamp',
+                callback: (collectionData) => {
+                    const results = [];
+                    collectionData.forEach( (document) => {
+                        const data = document.data();
+                        data['eventId'] = document.id;
+                        results.push(data);
+                    })
+                    setEvents(results);  
+                }
+            })
+        }
 
     }, [profile])
 
@@ -34,7 +40,7 @@ const EventList = ({userType}) => {
         <div className="eventList">
             {events && 
             events.map( (event) => {
-                return <EventCard key={event.timestamp+event.host} eventData={event}/>
+                return <EventCard key={event.timestamp+event.host} eventData={event} userType={userType}/>
             })}
         </div>
     )

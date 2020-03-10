@@ -10,6 +10,10 @@
     border-radius: 8px;
     color: white;
 
+    &.spectatorCard{
+        background-color: $main;
+    }
+
     div.title{
         @include flex-complete($direction: row, $justify: space-between, $align: center);
         width: 100%;
