@@ -3,11 +3,11 @@
 
 .home{
     @include flex-complete($direction: column, $justify: flex-start, $align: center);
-
-    height:100vh;
+    min-height:100vh;
     max-width: 500px;
     margin: 0 auto;
     overflow-x: hidden;
+    
 }
 
 .homeOptions{
@@ -22,30 +22,21 @@
         width:50%;
         text-align: center;
         height:50px;
+        margin-bottom: 4px;
     }
 }
 
 .specOption{
     background-color: $main;
+    border-radius: 4px 0 0 4px;
 }
 
 .hostOption{
     background-color: $secondary;
+    border-radius: 0 4px 4px 0;
 }
 
-.footer{
-    @include flex-complete($direction: row, $justify: center, $align: center);
-    position: sticky;
-    top:100%;
-    padding: 12px;
-    background-color: greenyellow;
-    width:100%;
-    
-    button{
-        padding: 8px;
-        border:none;
-        background-color: goldenrod;
-        border-radius: 4px;
-    }
+.main{
+    width: 100%;
 }
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { logout, registerAuthObserver } from '../../services/auth';
+import { registerAuthObserver } from '../../services/auth';
 import { setUser } from '../../redux/userActions';
 import { getItem } from '../../services/database';
 
@@ -18,11 +18,6 @@ const Home = ({history}) => {
 
     const [isLoading, setIsLoading] = useState(true);
     const [mainView, setMainView] = useState('showSpectator');
-
-    const handleLogOut = () => {
-        logout();
-        history.push('/');
-    }
 
     useEffect(()=>{
         if(cancelObserver) cancelObserver();
@@ -57,11 +52,8 @@ const Home = ({history}) => {
                 </div>
             </div>
             <div className="main">
-                <Spectator view={mainView}/>
-                <Host view={mainView}/>
-            </div>
-            <div className="footer">
-                <button onClick={handleLogOut}>Log Out</button>                
+                <Spectator view={mainView} history={history}/>
+                <Host view={mainView} history={history}/>
             </div>
         </div>
     )
