@@ -54,10 +54,17 @@ async function deleteItem(collection, itemId) {
     return !result;
 }
 
+async function updateItemMerge(collection, item, id){
+    const db = getDbInstance();
+    const result = await db.collection(collection).doc(id).set(item, {merge:true});
+    return !result;
+}
+
 export{
     addItemWithId,
     addItem,
     getItem,
     getAllRealTime,
-    deleteItem
+    deleteItem,
+    updateItemMerge
 }

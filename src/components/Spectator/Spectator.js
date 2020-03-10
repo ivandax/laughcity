@@ -9,7 +9,7 @@ const Spectator = ({view, history}) => {
     return (
         <div className={`spectator ${view}`}>
             <EventList userType="spectatorCard"/>
-            <Footer /> 
+            <Footer history={history} /> 
         </div>
     )
 }

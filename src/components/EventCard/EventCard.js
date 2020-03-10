@@ -1,23 +1,37 @@
 import React, { useState } from 'react';
 
-import { deleteItem } from '../../services/database';
+import { deleteItem, updateItemMerge } from '../../services/database';
 import { orderObject } from '../../helpers/helpers';
 
 import Participant from '../Participant';
+import Option from '../Option';
 
 import './EventCard.scss';
 
 const EventCard = ({eventData, userType}) => {
 
     const [display, setDisplay] = useState('noShow');
+    const [choice, setChoice] = useState('');
 
     const deleteEvent = async () => {
         const result = await deleteItem("events", eventData.eventId);
         result && console.log("event deleted");
     }
 
-    const saveChanges = () => {
-        console.log("trying to save");
+    const setSelection = (value) => {
+        setChoice(value);
+    }
+
+    const saveChanges = async () => { //only submits once a choice has been made.
+        if(choice){
+            // const currentParticipants = {...eventData.participants};
+            // const newValue = currentParticipants[choice]['count'] + 1;
+            // console.log(newValue);
+            // const newCount = {'count':newValue};
+            // currentParticipants[choice] = {...currentParticipants[choice], {'count': currentParticipants[choice]['count']+1}}
+            // console.log(currentParticipants);
+        }
+        //choice && await updateItemMerge('events', {particpants : {...eventData.participants, choice: } ,eventData.eventId)
     }
 
     console.log(eventData)
@@ -32,9 +46,17 @@ const EventCard = ({eventData, userType}) => {
                 <div>{eventData.date}</div>
             </div>
             <div className="participants">
-                {eventData.participants && orderObject(eventData.participants).map( (elem) => {
-                    return <Participant key={elem[0]+elem[1]} order={elem[1]+1} participantName={elem[0]} deleteParticipant={()=>{return null}} usage=""/>
-                } )}
+                {
+                    userType==="hostCard"
+                    ?
+                    eventData.participants && orderObject(eventData.participants).map( (elem) => {
+                        return <Participant key={elem[0]+elem[1]} order={elem[1]+1} participantName={elem[0]} deleteParticipant={()=>{return null}} usage=""/>
+                    } )
+                    :
+                    eventData.participants && orderObject(eventData.participants).map( (elem) => {
+                        return <Option key={elem[0]+elem[1]} order={elem[1]+1} participantName={elem[0]} setSelection={setSelection} iAmChosen={elem[0]===choice && 'chosen'}/>
+                    } )                    
+                }
             </div>
             {
               userType==='hostCard' && //only shows for host card

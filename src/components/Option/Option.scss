@@ -1,0 +1,29 @@
+@import '../../style/variables.scss';
+@import '../../style/mixins.scss';
+
+.option{
+    @include flex-complete($direction: row, $justify: space-between, $align: center);
+    align-content: center;
+    width:100%;
+    background-color: $deepblue;
+    border-radius: 4px;
+    margin:4px;
+    padding-left: 4px;
+
+    button{
+        padding: 16px;
+        margin: 0;
+        color: white;
+        background-color: blue;
+        border:none;
+        border-radius: 4px;
+    }
+}
+
+.option.chosen{
+    background-color: lightskyblue;
+    color:black;
+    button{
+        background-color: limegreen;
+    }
+}

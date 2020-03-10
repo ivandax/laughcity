@@ -11,7 +11,7 @@ const Host = ({view, history}) => {
         <div className={`host ${view}`}>
             <AddEvent />
             <EventList userType="hostCard"/>
-            <Footer />   
+            <Footer history={history}/>   
         </div>
     )
 }
