@@ -41,8 +41,8 @@
 
     }
 
-    > button{
-        padding: 4px;
+    >button{
+        padding: 8px;
         border: none;
         border-radius: 4px;
         font-weight: bold;
@@ -50,7 +50,8 @@
         margin: 4px;
         margin-top: 16px;
         color:white;
-        background-color: darkslategray;
+        background-color: $deepblue;
+        font-size: 14px;
     }
 
     button.eventDelete{
@@ -60,4 +61,8 @@
 
 .noShow{
     display:none;
+}
+
+.message{
+    padding: 4px;
 }

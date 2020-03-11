@@ -55,7 +55,8 @@ const AddEvent = () => {
                 timestamp : +(new Date()),
                 host: profile.id,
                 hostName: profile.name,
-                active: true
+                active: true,
+                voters: []
             }
             setEvent(data);
         } else{
@@ -85,13 +86,13 @@ const AddEvent = () => {
                             onChange={value => setEventData({...eventData, date: value})}
                         />                         
                     </div>
-                    <div>
+                    {/* <div>
                         <label>Rank Type</label>
                         <select value={eventData.type} onChange={event => setEventData({...eventData, type: event.target.value})}>
                             <option>Favorite</option>
-                            {/* <option>Rank</option> */}
+                            <option>Rank</option>
                         </select>                         
-                    </div>              
+                    </div>               */}
                 </div>
                 <div className="participantBox">
                     <label>Participants</label>

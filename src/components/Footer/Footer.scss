@@ -9,13 +9,10 @@
     height:3rem;
     margin: 0 auto;
     border-radius: 4px;
+    align-self: center;
 
     position: absolute;
     top:100%;
-
-    @media only screen and (min-width: 500px){
-        width: 500px;
-    }
     
     button{
         padding: 8px;

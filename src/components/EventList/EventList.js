@@ -40,7 +40,7 @@ const EventList = ({userType}) => {
         <div className="eventList">
             {events && 
             events.map( (event) => {
-                return <EventCard key={event.timestamp+event.host} eventData={event} userType={userType}/>
+                return <EventCard key={event.timestamp+event.host} eventData={event} userType={userType} profileId={profile.id}/>
             })}
         </div>
     )
