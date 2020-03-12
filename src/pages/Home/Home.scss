@@ -6,7 +6,6 @@
     min-height:100vh;
     max-width: 500px;
     margin: 0 auto;
-    overflow-x: hidden;
     
 }
 
@@ -14,6 +13,7 @@
     @include flex-complete($direction: row, $justify: space-around, $align: stretch);
     
     width:100%;
+    cursor: pointer;
 
     div{
         padding: 16px;
@@ -28,12 +28,12 @@
 
 .specOption{
     background-color: $main;
-    border-radius: 4px 0 0 4px;
+    border-radius: 0 0 0 4px;
 }
 
 .hostOption{
     background-color: $secondary;
-    border-radius: 0 4px 4px 0;
+    border-radius: 0 0 4px 0;
 }
 
 .main{

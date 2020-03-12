@@ -16,3 +16,7 @@ a{
   margin: 0 auto;
   overflow-x: hidden;
 }
+
+button{
+  cursor: pointer;
+}

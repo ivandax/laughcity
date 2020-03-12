@@ -32,7 +32,7 @@ const arrayIntoList = (array, type) => {
     const dataObject = {};
     if(type==="Favorite"){
         array.forEach( (elem,index) => {
-            dataObject[elem] = {count: 0, order: index};
+            dataObject[elem] = {count: [], order: index};
         }) 
     }
     return dataObject;

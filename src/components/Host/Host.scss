@@ -2,6 +2,7 @@
 @import '../../style/mixins.scss';
 
 .host{
+    @include flex-complete($direction: column, $justify: flex-start, $align: center);
     width:100%;
     position: absolute;
     transition-duration: 0.5s;

@@ -32,7 +32,7 @@ const EventCard = ({eventData, userType, profileId}) => {
     const saveChanges = async () => { //only submits once a choice has been made.
         if(choice && !voted){
             const newParticipants = {...eventData.participants};
-            newParticipants[choice]['count'] += 1;
+            newParticipants[choice]['count'].push(profileId);
             await updateItemMerge('events', {participants : newParticipants}, eventData.eventId);
             const newVoters = [...eventData.voters, profileId];
             await updateItemMerge('events', {voters : newVoters}, eventData.eventId);
