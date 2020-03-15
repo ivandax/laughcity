@@ -20,7 +20,7 @@ const validateAll = (formData) => {
 const orderObject = (object) => {
     const sortable = [];
     for (let element in object){
-        sortable.push([element, object[element].order]);
+        sortable.push([element, object[element].order, object[element].count]);
     }
     sortable.sort(function(a, b) {
         return a[1] - b[1];

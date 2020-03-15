@@ -48,10 +48,15 @@
         font-weight: bold;
         align-self: flex-end;
         margin: 4px;
-        margin-top: 16px;
+        margin-top: 8px;
         color:white;
         background-color: $deepblue;
         font-size: 14px;
+        min-width: 120px;
+
+        &.eventClose{
+            background-color: rgb(39, 38, 38);
+        }
     }
 
     button.eventDelete{
