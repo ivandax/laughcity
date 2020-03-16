@@ -70,6 +70,7 @@ const Welcome = ({history}) => {
         } else{
             signup(email, password);
             setEmailNotification("Verification email sent!")
+            setLoginData({email:email,password:''})
         }
     }
 
