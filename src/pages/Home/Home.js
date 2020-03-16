@@ -23,7 +23,7 @@ const Home = ({history}) => {
         if(cancelObserver) cancelObserver();
 
         cancelObserver = registerAuthObserver(async(user)=>{
-            if(!user){
+            if(!user || !user.emailVerified){
                 history.push('/');
             }
             else{

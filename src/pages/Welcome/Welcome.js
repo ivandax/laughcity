@@ -16,28 +16,32 @@ const Welcome = ({history}) => {
     const [loginData, setLoginData] = useState({email:'',password:''});
     const [signUpData, setSignUpData] = useState({name:'',email:'',password:''});
     const [error, setError] = useState('');
+    const [emailNotification, setEmailNotification] = useState('');
 
     useEffect(()=>{
         if(cancelObserver) cancelObserver();
 
         cancelObserver = registerAuthObserver(async(user)=>{
+            console.log("auth observer runs")
             if(user){
                 console.log('user is', user);
-                const profile = await getItem('profiles', user.uid);
-                if(!profile){
-                    const result = await addItemWithId(
-                        'profiles',
-                        {
-                            name: signUpData.name,
-                            email: signUpData.email,
-                            eventNames: [],
-                            homiesNames: []
-                        },
-                        user.uid
-                    );
-                    result && history.push('/home');
-                } else{
-                    history.push('/home');
+                if(user.emailVerified){
+                    const profile = await getItem('profiles', user.uid);
+                    if(!profile){
+                        const result = await addItemWithId(
+                            'profiles',
+                            {
+                                name: signUpData.name,
+                                email: signUpData.email,
+                                eventNames: [],
+                                homiesNames: []
+                            },
+                            user.uid
+                        );
+                        result && history.push('/home');
+                    } else{
+                        history.push('/home');
+                    }
                 }
             }
             else{
@@ -48,7 +52,7 @@ const Welcome = ({history}) => {
         return () => {
             cancelObserver();
         }
-    }, [signUpData.email, signUpData.name, history]);
+    }, [history, signUpData.email, signUpData.name]);
 
     const toggleDisplay = () => {
         const currentDisplay = [...display];
@@ -60,13 +64,12 @@ const Welcome = ({history}) => {
         setError('');
         
         const {name,email,password} = signUpData;
-        console.log(name,email);
 
         if(!name || !email || !password){
             setError("All fields are required!");
         } else{
-            console.log("signing up -> "+signUpData)
-            signup(email, password)
+            signup(email, password);
+            setEmailNotification("Verification email sent!")
         }
     }
 
@@ -75,12 +78,12 @@ const Welcome = ({history}) => {
         setError('');
         
         const {email,password} = loginData;
-        console.log(email);
 
         if(!email || !password){
             setError("All fields are required!");
         } else{
-            login(email, password)
+            login(email, password);
+            history.push('/');
         }
     }
 
@@ -127,7 +130,8 @@ const Welcome = ({history}) => {
                     onChange={value => setSignUpData({...signUpData, password: value})}
                 />
                 <button type="submit">Sign Up</button>  
-                {error && <div>{error}</div>}      
+                {error && <div>{error}</div>}
+                {emailNotification && <div className="verification">{emailNotification}</div>}       
             </form>
         </div>
     )
