@@ -18,10 +18,15 @@ const EventList = ({userType}) => {
                 'hostCard' : {field: 'host', condition: '==', value: profile.id}, //if displaying host...
                 'spectatorCard' : {field: 'timestamp', condition: '>', value: 0} //display all for spectator
             }
+            const limits = {
+                'hostCard' : 100, //show 100 events
+                'spectatorCard' :  20 //max 20 events for spectator
+            }
             getAllRealTime({
                 collection: 'events',
                 filters: queries[userType],
                 order: 'timestamp',
+                limit: limits[userType],
                 callback: (collectionData) => {
                     const results = [];
                     collectionData.forEach( (document) => {

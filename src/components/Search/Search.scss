@@ -1,0 +1,6 @@
+@import '../../style/variables.scss';
+@import '../../style/mixins.scss';
+
+.search{
+    @include flex-complete($direction: row, $justify: space-around, $align: center);
+}

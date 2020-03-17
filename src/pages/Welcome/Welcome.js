@@ -22,7 +22,6 @@ const Welcome = ({history}) => {
         if(cancelObserver) cancelObserver();
 
         cancelObserver = registerAuthObserver(async(user)=>{
-            console.log("auth observer runs")
             if(user){
                 console.log('user is', user);
                 if(user.emailVerified){
