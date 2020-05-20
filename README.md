@@ -1,3 +1,6 @@
+## Functional Description
+This app allows users to log in as "HOSTS" to create their single question surveys (or any sort of list for voting purposes) and share with a group of people for voting submission. The responses of users in the role of "SPECTATORS" are accumulated so we can see real time results of submissions. Think of it as a real time voting system available for everyone. Very good for public events.
+
 
 npx create-react-app
 npm install node-sass
