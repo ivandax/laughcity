@@ -32,16 +32,16 @@
             border: solid 2px $secondary;
             border-radius: 4px;
             height: 40px;
-            width: 300px;
+            width: 200px;
         }
 
         button{
-            width:150px;
+            width:120px;
             background-color: $secondary;
             color:white;
             font-weight: bold;
-            align-self: flex-end;
-            margin-top:20px;
+            align-self: center;
+            margin-top:15px;
         }
 
         div{

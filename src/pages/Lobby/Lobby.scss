@@ -12,6 +12,10 @@
         color: white;
         align-self: flex-start;
 
+        @media only screen and (min-width: $tablet){
+            align-self: center;
+        }
+
         span{
             color: $secondary;
         }
@@ -21,12 +25,19 @@
         padding: 16px;
         background-color: $secondary;
         border-radius: 8px;
-        width: 80px;
         text-align: center;
     }
 
     .vote{
         color: greenyellow;
+    }
+
+    img{
+        width: 70%;
+
+        @media only screen and (min-width: $tablet){
+            width: 35%
+        }
     }
 
 }

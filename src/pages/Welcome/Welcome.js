@@ -21,6 +21,7 @@ const Welcome = ({history}) => {
 
     useEffect(()=>{
         if(cancelObserver) cancelObserver();
+        //console.log("this happens")
 
         cancelObserver = registerAuthObserver(async(user)=>{
             if(user){
@@ -38,9 +39,9 @@ const Welcome = ({history}) => {
                             },
                             user.uid
                         );
-                        result && history.push('/home');
+                        result && history.push('/lobby');
                     } else{
-                        history.push('/home');
+                        history.push('/lobby');
                     }
                 } else{
                     setLoginData({...loginData, email: user.email})
@@ -55,7 +56,7 @@ const Welcome = ({history}) => {
         return () => {
             cancelObserver();
         }
-    }, [history, signUpData.email, signUpData.name, loginData]);
+    }, [history, signUpData.email, signUpData.name]);
 
     const toggleDisplay = () => {
         const currentDisplay = [...display];
@@ -90,8 +91,9 @@ const Welcome = ({history}) => {
             if(result.message){
                 //console.log(result);
                 setLoginError(result.message);
-            }
-            history.push('/');                
+            }else{
+                history.push('/lobby');  
+            }            
         }
     }
 

@@ -67,12 +67,12 @@ const AddEvent = () => {
     return (
         <div className="addEvent">
             <button onClick={()=>{formDisplay==="noShow" ? setFormDisplay('show') : setFormDisplay('noShow')}}>
-                New Event
+                Create New
             </button>
             <form onSubmit={submitEvent} className={formDisplay}>
                 <div className="formError">{formError}</div>
                 <FormInput
-                    placeholder="Title"
+                    placeholder="Title or Question" 
                     value={eventData.title}
                     onChange={value => setEventData({...eventData, title: value})}
                 />
@@ -80,7 +80,6 @@ const AddEvent = () => {
                     <div>
                         <label>Date</label>
                         <FormInput 
-                            placeholder="Title" 
                             value={eventData.date}
                             type='date'
                             onChange={value => setEventData({...eventData, date: value})}
@@ -95,10 +94,10 @@ const AddEvent = () => {
                     </div>               */}
                 </div>
                 <div className="participantBox">
-                    <label>Participants</label>
+                    <label>Options</label>
                     <div>
                         <FormInput 
-                            placeholder="Participant's name" 
+                            placeholder="Option" 
                             value={participant}
                             onChange={value => setParticipant(value)}
                         />
@@ -114,7 +113,7 @@ const AddEvent = () => {
                     return <Participant key={person+index} order={index+1} participantName={person} deleteParticipant={deleteParticipant} usage="delete"></Participant>
                     })}
                 </div>
-                <button type="submit">Create Event</button>
+                <button type="submit">Create</button>
             </form>
         </div>
     ) 
