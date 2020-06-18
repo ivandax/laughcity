@@ -1,0 +1,32 @@
+@import '../../style/variables.scss';
+@import '../../style/mixins.scss';
+
+.lobby{
+    @include flex-complete($direction: column, $justify: flex-start, $align: center);
+    background-color: $main;
+    margin: 0 auto;
+    min-height: 100vh;
+
+    p{
+        padding: 8px 60px 8px 60px;
+        color: white;
+        align-self: flex-start;
+
+        span{
+            color: $secondary;
+        }
+    }
+
+    a{
+        padding: 16px;
+        background-color: $secondary;
+        border-radius: 8px;
+        width: 80px;
+        text-align: center;
+    }
+
+    .vote{
+        color: greenyellow;
+    }
+
+}

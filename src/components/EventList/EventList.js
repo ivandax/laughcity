@@ -39,7 +39,7 @@ const EventList = ({userType}) => {
             })
         }
 
-    }, [profile])
+    }, [profile, userType])
 
     return (
         <div className="eventList">

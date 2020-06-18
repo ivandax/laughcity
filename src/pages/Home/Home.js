@@ -37,7 +37,7 @@ const Home = ({history}) => {
         return () => {
             cancelObserver();
         }
-    }, [history]);
+    }, [history, dispatch]);
 
     if(isLoading) return <div>Loading...</div>
 
@@ -45,10 +45,10 @@ const Home = ({history}) => {
         <div className="home">
             <div className="homeOptions">
                 <div className="specOption" onClick={()=>{setMainView('showSpectator')}}>
-                    Spectator
+                    Vote
                 </div>
                 <div className="hostOption" onClick={()=>{setMainView('showHost')}}>
-                    Host
+                    Create
                 </div>
             </div>
             <div className="main">

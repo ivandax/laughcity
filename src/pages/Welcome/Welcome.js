@@ -15,8 +15,9 @@ const Welcome = ({history}) => {
     const [display, setDisplay] = useState(['display','']);
     const [loginData, setLoginData] = useState({email:'',password:''});
     const [signUpData, setSignUpData] = useState({name:'',email:'',password:''});
-    const [error, setError] = useState('');
-    const [emailNotification, setEmailNotification] = useState('');
+    const [loginError, setLoginError] = useState('');
+    const [signUpError, setSignUpError] = useState('');
+    //const [error, setError] = useState('');
 
     useEffect(()=>{
         if(cancelObserver) cancelObserver();
@@ -41,6 +42,9 @@ const Welcome = ({history}) => {
                     } else{
                         history.push('/home');
                     }
+                } else{
+                    setLoginData({...loginData, email: user.email})
+                    setLoginError("User not verified. Please verify your email address.")
                 }
             }
             else{
@@ -51,7 +55,7 @@ const Welcome = ({history}) => {
         return () => {
             cancelObserver();
         }
-    }, [history, signUpData.email, signUpData.name]);
+    }, [history, signUpData.email, signUpData.name, loginData]);
 
     const toggleDisplay = () => {
         const currentDisplay = [...display];
@@ -60,30 +64,34 @@ const Welcome = ({history}) => {
 
     const handleSignUp = (event) => {
         event.preventDefault();
-        setError('');
+        setSignUpError('');
         
         const {name,email,password} = signUpData;
 
         if(!name || !email || !password){
-            setError("All fields are required!");
+            setSignUpError("All fields are required!");
         } else{
             signup(email, password);
-            setEmailNotification("Verification email sent!")
+            setSignUpError("Verification email sent!")
             setLoginData({email:email,password:''})
         }
     }
 
-    const handleLogIn = (event) => {
+    const handleLogIn = async (event) => {
         event.preventDefault();
-        setError('');
+        setLoginError('');
         
         const {email,password} = loginData;
 
         if(!email || !password){
-            setError("All fields are required!");
+            setLoginError("All fields are required!");
         } else{
-            login(email, password);
-            history.push('/');
+            const result = await login(email, password);
+            if(result.message){
+                //console.log(result);
+                setLoginError(result.message);
+            }
+            history.push('/');                
         }
     }
 
@@ -107,6 +115,7 @@ const Welcome = ({history}) => {
                     onChange={value => setLoginData({...loginData, password: value})}
                 />
                 <button type="submit">Log In</button>
+                {loginError && <div className="error">{loginError}</div>}
             </form>
             <form className={`signUp ${display[1]}`} onSubmit={handleSignUp}>
                 <div>
@@ -130,8 +139,7 @@ const Welcome = ({history}) => {
                     onChange={value => setSignUpData({...signUpData, password: value})}
                 />
                 <button type="submit">Sign Up</button>  
-                {error && <div>{error}</div>}
-                {emailNotification && <div className="verification">{emailNotification}</div>}       
+                {signUpError && <div className="error">{signUpError}</div>}     
             </form>
         </div>
     )

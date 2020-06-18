@@ -18,8 +18,12 @@ function registerAuthObserver(callback) {
 }
 
 async function login(email,password){
-    const result = await firebase.auth().signInWithEmailAndPassword(email,password);
-    return result.user.uid;
+    try{
+        const result = await firebase.auth().signInWithEmailAndPassword(email,password);
+        return result.user.uid;        
+    } catch(e){
+        return e;
+    }
 }
 
 export {

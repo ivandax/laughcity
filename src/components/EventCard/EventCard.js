@@ -18,7 +18,7 @@ const EventCard = ({eventData, userType, profileId}) => {
         if(eventData['voters'].indexOf(profileId)>-1){
             setVoted(true);
         }
-    }, [])
+    }, [eventData, profileId])
 
     const deleteEvent = async () => {
         const result = await deleteItem("events", eventData.eventId);
