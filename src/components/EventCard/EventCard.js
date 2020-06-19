@@ -56,7 +56,7 @@ const EventCard = ({eventData, userType, profileId}) => {
                     <h3>{eventData.title}</h3>
                     <span> by {eventData.hostName}</span>
                 </div>
-                <div>{eventData.date}</div>
+                <div className="date">{eventData.date}</div>
             </div>
             <div className="participants">
                 {
@@ -81,7 +81,7 @@ const EventCard = ({eventData, userType, profileId}) => {
               <button className={`eventDelete ${display}`} onClick={deleteEvent}>Yeah, sure.</button>)
             }
             {
-                <span className="message">{`This event is: ${eventData.active ? 'Open for Votes' : "Closed"}`}</span>
+                <span className={`message ${eventData.active ? 'open' : "closed"}`}>{`This event is: ${eventData.active ? 'Open for Votes' : "Closed"}`}</span>
             }   
             {
                 (userType==='spectatorCard' && voted) && <span className="message">Vote Submitted!</span>

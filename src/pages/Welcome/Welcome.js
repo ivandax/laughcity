@@ -28,7 +28,7 @@ const Welcome = ({history}) => {
                 console.log('user is', user);
                 if(user.emailVerified){
                     const profile = await getItem('profiles', user.uid);
-                    if(!profile){
+                    if(!profile){ //first time creation of the profile.
                         const result = await addItemWithId(
                             'profiles',
                             {
@@ -41,7 +41,7 @@ const Welcome = ({history}) => {
                         );
                         result && history.push('/lobby');
                     } else{
-                        history.push('/lobby');
+                        history.push('/home'); //go straight to home if this is not the first login.
                     }
                 } else{
                     setLoginData({...loginData, email: user.email})

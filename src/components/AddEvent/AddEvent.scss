@@ -3,6 +3,7 @@
 
 .addEvent{
     @include flex-complete($direction: column, $justify: flex-start, $align: center);
+    width: 90%;
 
     button{
         @include flex-complete($direction: row, $justify: center, $align: center);
@@ -14,16 +15,16 @@
         border-radius: 25px;
         font-weight: bold;
         @media only screen and (min-width: 500px){
-            width: 500px;
+            max-width: 500px;
         }
     }
 
     form{
         @include flex-complete($direction: column, $justify: flex-start, $align: flex-start);
-        width:90%;
+        width:100%;
 
         @media only screen and (min-width: 500px){
-            width: 500px;
+            max-width: 500px;
         }
 
         input{
@@ -32,7 +33,7 @@
             border: solid 2px $secondary;
             border-radius: 4px;
             height: 40px;
-            width: 200px;
+            width: 80%;
         }
 
         button{
@@ -47,7 +48,7 @@
         div{
 
             input{
-                width: 200px;                
+                width: 80%;                
             }
 
             select{

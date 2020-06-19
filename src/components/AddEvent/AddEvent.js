@@ -76,25 +76,13 @@ const AddEvent = () => {
                     value={eventData.title}
                     onChange={value => setEventData({...eventData, title: value})}
                 />
-                <div className="doubleBlock">
-                    <div>
-                        <label>Date</label>
-                        <FormInput 
-                            value={eventData.date}
-                            type='date'
-                            onChange={value => setEventData({...eventData, date: value})}
-                        />                         
-                    </div>
-                    {/* <div>
-                        <label>Rank Type</label>
-                        <select value={eventData.type} onChange={event => setEventData({...eventData, type: event.target.value})}>
-                            <option>Favorite</option>
-                            <option>Rank</option>
-                        </select>                         
-                    </div>               */}
-                </div>
+                <FormInput 
+                    value={eventData.date}
+                    type='date'
+                    onChange={value => setEventData({...eventData, date: value})}
+                />   
                 <div className="participantBox">
-                    <label>Options</label>
+                    <label>Vote Options</label>
                     <div>
                         <FormInput 
                             placeholder="Option" 

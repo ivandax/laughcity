@@ -19,20 +19,16 @@
     }
 
     div.title{
-        @include flex-complete($direction: row, $justify: space-between, $align: center);
+        @include flex-complete($direction: row, $justify: space-between, $align: flex-start);
         width: 100%;
 
-
-        div h3{
+        div{
             padding: 8px;
         }
 
-        div span{
-            margin-left: 16px;
-        }
-
-        div{
-            padding:8px;
+        div.date{
+            min-width: 80px;
+            font-size: 10px;
         }
     }
 
@@ -42,20 +38,19 @@
     }
 
     >button{
-        padding: 8px;
+        padding: 4px;
         border: none;
         border-radius: 4px;
-        font-weight: bold;
         align-self: flex-end;
         margin: 4px;
-        margin-top: 8px;
+        margin-top: 4px;
         color:white;
         background-color: $deepblue;
-        font-size: 14px;
-        min-width: 120px;
+        font-size: 12px;
+        min-width: 100px;
 
         &.eventClose{
-            background-color: rgb(39, 38, 38);
+            background-color: gray;
         }
     }
 
@@ -70,4 +65,10 @@
 
 .message{
     padding: 4px;
+    margin: 0 auto;
+    font-size: 12px;
+
+    &.open{
+        color:green;
+    }
 }

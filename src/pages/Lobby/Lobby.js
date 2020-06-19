@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import Brand from '../../components/Brand';
@@ -7,6 +7,11 @@ import './Lobby.scss';
 import img from '../../images/options.JPG'
 
 const Lobby = () => {
+
+    const [isLoading, setIsLoading] = useState(true);
+
+    if(isLoading) return <div>Loading...</div>
+
     return (
         <div className="lobby">
             <Brand />
