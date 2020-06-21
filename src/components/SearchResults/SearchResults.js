@@ -18,7 +18,7 @@ const SearchResults = ({events}) => {
                 return <EventCard key={event.timestamp+event.host} userType='spectatorCard' eventData={event} profileId={profile.id}/>
             })
             :
-            <div>You will see search results here.</div>
+            <div className="noResults">Search results will display here.</div>
         }
         </div>
     )

@@ -33,6 +33,8 @@ const EventCard = ({eventData, userType, profileId}) => {
         }    
     }
 
+    console.log("event data logging", eventData)
+
     const setSelection = (value) => {
         setChoice(value);
     }
@@ -71,6 +73,7 @@ const EventCard = ({eventData, userType, profileId}) => {
                     } )                    
                 }
             </div>
+            <div className="identifier">{`ID: ${eventData.identifier}`}</div>
             {   userType==='hostCard' && (//only shows for host card
               <button className="eventClose" onClick={changeEventStatus}>{eventData.active ? 'Close Event' : "Re-Open"}</button>)
             }
