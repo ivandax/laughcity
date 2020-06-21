@@ -39,7 +39,7 @@ const Home = ({history}) => {
         }
     }, [history, dispatch]);
 
-    if(isLoading) return <div>Loading...</div>
+    if(isLoading) return <div className="loading"><img src='https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/source.gif' /></div>
 
     return (
         <div className="home">

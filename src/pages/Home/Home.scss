@@ -40,3 +40,12 @@
     width: 100%;
 }
 
+.loading{
+    @include flex-complete($direction: column, $justify: center, $align: center);
+    width: 100%;
+    img{
+        margin: 0 auto;
+        width: 50%;
+    }
+}
+

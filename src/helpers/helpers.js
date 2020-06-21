@@ -38,8 +38,13 @@ const arrayIntoList = (array, type) => {
     return dataObject;
 }
 
+const makeIdentifier = (email, id, length) => {
+    return `${email.substring(0,2).toLowerCase()}${id.substring(0,2).toLowerCase()}${length}`
+}
+
 export {
     validateAll,
     arrayIntoList,
-    orderObject
+    orderObject,
+    makeIdentifier
 }

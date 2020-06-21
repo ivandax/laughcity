@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { setUser } from '../../redux/userActions';
 
 import FormInput from '../FormInput';
 import Participant from '../Participant';
 
-import { validateAll, arrayIntoList } from '../../helpers/helpers';
-import { addItem } from '../../services/database';
+import { validateAll, arrayIntoList, makeIdentifier } from '../../helpers/helpers';
+import { addItem, updateItemMerge } from '../../services/database';
 
 import './AddEvent.scss';
 
 const AddEvent = () => {
 
     const profile = useSelector(state=>state.user);
+    const dispatch = useDispatch();
 
     const [eventData, setEventData] = useState(
         {
@@ -39,6 +42,13 @@ const AddEvent = () => {
             console.log("event added!");
             setEventData({title:'',date:'',type:'Favorite',participants: []}); //resets form data
             setFormDisplay('noShow'); //hides the form until user wants to add more
+            await updateItemMerge('profiles', //updates the profile on database with the new event.
+             {
+                 events : [...profile.events, dataObject.identifier]
+             }, 
+             profile.id)
+            const modProfile = {...profile, events: [...profile.events, dataObject.identifier]}
+            dispatch(setUser(modProfile)) //updates the profile on redux with the new event.
         }
     }
 
@@ -56,7 +66,8 @@ const AddEvent = () => {
                 host: profile.id,
                 hostName: profile.name,
                 active: true,
-                voters: []
+                voters: [],
+                identifier: makeIdentifier(profile.email, profile.id, profile.events.length)
             }
             setEvent(data);
         } else{

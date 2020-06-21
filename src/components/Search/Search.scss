@@ -3,4 +3,13 @@
 
 .search{
     @include flex-complete($direction: row, $justify: space-around, $align: center);
+
+    select, button, input{
+        margin: 4px;
+        padding: 4px;
+    }
+
+    .noView{
+        visibility: hidden;
+    }
 }

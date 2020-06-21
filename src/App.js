@@ -6,7 +6,7 @@ import {
 
 import Welcome from './pages/Welcome';
 import Home from './pages/Home';
-import Lobby from './pages/Lobby';
+//import Lobby from './pages/Lobby';
 
 import './App.css';
 
@@ -16,7 +16,7 @@ const App = () => {
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/lobby" component={Lobby}></ Route>
+          {/* <Route path="/lobby" component={Lobby}></ Route> */}
           <Route path="/home" component={Home}></ Route>
           <Route path="/" component={Welcome}></ Route>
         </Switch>

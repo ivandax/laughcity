@@ -34,12 +34,12 @@ const Welcome = ({history}) => {
                             {
                                 name: signUpData.name,
                                 email: signUpData.email,
-                                eventNames: [],
-                                homiesNames: []
+                                events: [],
+                                homies: []
                             },
                             user.uid
                         );
-                        result && history.push('/lobby');
+                        result && history.push('/home');
                     } else{
                         history.push('/home'); //go straight to home if this is not the first login.
                     }
@@ -92,7 +92,7 @@ const Welcome = ({history}) => {
                 //console.log(result);
                 setLoginError(result.message);
             }else{
-                history.push('/lobby');  
+                history.push('/home');  
             }            
         }
     }
