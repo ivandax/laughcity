@@ -4,7 +4,7 @@
 .footer{
     @include flex-complete($direction: row, $justify: center, $align: center);
     padding: 12px;
-    background-color: greenyellow;
+    background-color: $main;
     height:3rem;
     margin: 0 auto;
     margin-top: 200px;
@@ -21,7 +21,8 @@
     button{
         padding: 8px;
         border:none;
-        background-color: goldenrod;
+        background-color: $secondary;
         border-radius: 4px;
+        color: white;
     }
 }

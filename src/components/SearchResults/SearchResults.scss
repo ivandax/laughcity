@@ -2,11 +2,22 @@
 @import '../../style/mixins.scss';
 
 .searchResults{
-    @include flex-complete($direction: column, $justify: flex-start, $align: center);
-    
+    @include flex-complete($direction: column, $justify: flex-start, $align: flex-start);
     width: 100%;
+    max-width: 500px;
 }
 
 .noResults{
     padding-top: 16px;
+    p{
+        margin: 16px 0 16px 0;
+
+        span{
+            color: $secondary;
+
+            &.vote{
+                color: $main;
+            }
+        }
+    }
 }

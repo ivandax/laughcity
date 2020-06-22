@@ -22,7 +22,7 @@
         input{
             padding: 8px;
             margin: 8px;
-            border: none;
+            border: solid black 1px;
             width: 200px;
             border-radius: 4px;
         }
@@ -51,24 +51,24 @@
 }
 
 .signIn{
-    background-color: greenyellow;
+    background-color: $lightMain;
     @include flex-complete($direction: column, $justify: flex-start, $align: center);
 
 }
 
 .signInLink{
-    background-color: greenyellow;
+    background-color: $lightMain;
     border-radius: 8px 0 0 0;
 }
 
 .signUp{
-    background-color: goldenrod;
+    background-color: $secondary;
     @include flex-complete($direction: column, $justify: flex-start, $align: center);
 
 }
 
 .signUpLink{
-    background-color: goldenrod;
+    background-color: $secondary;
     border-radius: 0 8px 0 0;
 }
 

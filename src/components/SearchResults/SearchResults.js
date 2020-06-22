@@ -18,7 +18,14 @@ const SearchResults = ({events}) => {
                 return <EventCard key={event.timestamp+event.host} userType='spectatorCard' eventData={event} profileId={profile.id}/>
             })
             :
-            <div className="noResults">Search results will display here.</div>
+            <div className="noResults">
+                <p>Welcome to Cherry Rate App!</p>
+                <p>You can search for the <span className="vote">Most Recent</span> surveys to submit your vote</p>
+                <p>Or</p>
+                <p>If you know the <span className="vote">identifier</span>, search for a specific survey</p>
+                <p>Or</p>
+                <p>Go to tab <span>CREATE</span> to make your own survey</p>
+            </div>
         }
         </div>
     )

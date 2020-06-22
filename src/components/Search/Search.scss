@@ -3,6 +3,10 @@
 
 .search{
     @include flex-complete($direction: row, $justify: space-around, $align: center);
+    //background-color: $main;
+    width: 100%;
+    padding: 4px;
+    max-width: 500px;
 
     select, button, input{
         margin: 4px;
