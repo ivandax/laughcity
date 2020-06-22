@@ -56,7 +56,7 @@ const Search = ({getEvents}) => {
             </select>  
             <button type="submit">Search</button>
             <FormInput 
-                placeholder="Type your search" 
+                placeholder="Type identifier" 
                 value={searchString}
                 onChange={value => setSearchString(value)}
                 className={searchType==="Most Recent" ? 'noView' : ''}
