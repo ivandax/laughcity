@@ -6,6 +6,7 @@ import {
 
 import Welcome from './pages/Welcome';
 import Home from './pages/Home';
+import Settings from './pages/Settings';
 //import Lobby from './pages/Lobby';
 
 import './App.css';
@@ -18,6 +19,7 @@ const App = () => {
         <Switch>
           {/* <Route path="/lobby" component={Lobby}></ Route> */}
           <Route path="/home" component={Home}></ Route>
+          <Route path="/settings" component={Settings}></ Route>
           <Route path="/" component={Welcome}></ Route>
         </Switch>
       </Router>

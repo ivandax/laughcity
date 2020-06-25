@@ -1,0 +1,20 @@
+@import '../../style/variables.scss';
+@import '../../style/mixins.scss';
+
+.header{
+    @include flex-complete($direction: row, $justify: space-between, $align: center);
+    padding: 12px;
+    background-color: $deepblue;
+    height:2.5rem;
+    margin: 0 auto;
+    width: 95%;
+    font-size: 14px;
+
+    a{
+        color: white;
+    }
+
+    @media only screen and (min-width: 500px){
+        width: 500px;
+    }
+}

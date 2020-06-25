@@ -1,6 +1,6 @@
 //validate the form inputs when creating an event.
 const validateAll = (formData) => {
-    const {title,date,participants} = formData;
+    const {title, participants} = formData;
     if(title){
         //if(date){
             if(participants.length){

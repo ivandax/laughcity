@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { deleteItem, updateItemMerge } from '../../services/database';
+import { updateItemMerge } from '../../services/database';
 import { orderObject } from '../../helpers/helpers';
 
 import Option from '../Option';

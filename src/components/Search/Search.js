@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { getAllRealTime, getItem } from '../../services/database';
+import { getAllRealTime } from '../../services/database';
 
 import FormInput from '../FormInput';
 
@@ -54,13 +54,13 @@ const Search = ({getEvents}) => {
                 <option>Most Recent</option>
                 <option>By identifier</option>
             </select>  
-            <button type="submit">Search</button>
             <FormInput 
                 placeholder="Type identifier" 
                 value={searchString}
                 onChange={value => setSearchString(value)}
                 className={searchType==="Most Recent" ? 'noView' : ''}
-            />         
+            /> 
+            <button type="submit">Search</button>        
         </form>
     )
 }

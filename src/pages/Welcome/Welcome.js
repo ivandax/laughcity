@@ -33,7 +33,7 @@ const Welcome = ({history}) => {
                             'profiles',
                             {
                                 name: signUpData.name,
-                                email: signUpData.email,
+                                email: loginData.email,
                                 events: [],
                                 homies: []
                             },

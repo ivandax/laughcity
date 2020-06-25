@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import { deleteItem, updateItemMerge } from '../../services/database';
 import { orderObject } from '../../helpers/helpers';
@@ -10,7 +10,7 @@ import './EventCard.scss';
 const EventCard = ({eventData, userType, profileId}) => {
 
     const [display, setDisplay] = useState('noShow'); //we don't show the delete button right away
-    const [choice, setChoice] = useState(''); //choice is blank at first...
+    //const [choice, setChoice] = useState(''); //choice is blank at first...
     // const [voted, setVoted] = useState(false); //events is originally unvoted the first time for a user.
 
     // useEffect( () => { //checks if the event of this card has already been voted by the user.

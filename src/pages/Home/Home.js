@@ -7,6 +7,7 @@ import { getItem } from '../../services/database';
 
 import Host from '../../components/Host';
 import Spectator from '../../components/Spectator';
+import Header from  '../../components/Header';
 
 import './Home.scss';
 
@@ -39,10 +40,11 @@ const Home = ({history}) => {
         }
     }, [history, dispatch]);
 
-    if(isLoading) return <div className="loading"><img src='https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/source.gif' /></div>
+    if(isLoading) return <div className="loading"><img src='https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/source.gif' alt="loading"/></div>
 
     return (
         <div className="home">
+            <Header />
             <div className="homeOptions">
                 <div className="specOption" onClick={()=>{setMainView('showSpectator')}}>
                     Vote

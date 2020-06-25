@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Search from '../Search';
 //import EventList from '../EventList';
 import SearchResults from '../SearchResults';
-import Footer from '../Footer';
+//import Footer from '../Footer';
 
 import './Spectator.scss';
 
@@ -20,7 +20,7 @@ const Spectator = ({view, history}) => {
             <Search getEvents={getEvents}/>
             {/* <EventList userType="spectatorCard"/> */}
             <SearchResults events={events}/>
-            <Footer history={history} /> 
+            {/* <Footer history={history} />  */}
         </div>
     )
 }

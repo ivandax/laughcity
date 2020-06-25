@@ -1,0 +1,10 @@
+@import '../../style/variables.scss';
+@import '../../style/mixins.scss';
+
+.settings{
+    @include flex-complete($direction: column, $justify: flex-start, $align: center);
+    min-height:100vh;
+    max-width: 500px;
+    margin: 0 auto;
+    
+}
