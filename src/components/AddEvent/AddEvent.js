@@ -19,7 +19,7 @@ const AddEvent = () => {
     const [eventData, setEventData] = useState(
         {
             title:'',
-            date:'',
+            // date:'',
             type:'Favorite',
             participants: []
         }
@@ -59,7 +59,7 @@ const AddEvent = () => {
             setFormError('');
             const data = {
                 title: eventData.title,
-                date: eventData.date,
+                //date: eventData.date,
                 type: eventData.type,
                 participants: arrayIntoList(eventData.participants, eventData.type),
                 timestamp : +(new Date()),
@@ -87,11 +87,11 @@ const AddEvent = () => {
                     value={eventData.title}
                     onChange={value => setEventData({...eventData, title: value})}
                 />
-                <FormInput 
+                {/* <FormInput 
                     value={eventData.date}
                     type='date'
                     onChange={value => setEventData({...eventData, date: value})}
-                />   
+                />    */}
                 <div className="participantBox">
                     <label>Vote Options</label>
                     <div>

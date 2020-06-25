@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 //import { getAllRealTime } from '../../services/database';
 
-import EventCard from '../EventCard';
+import VoteCard from '../VoteCard';
 
 import './SearchResults.scss';
 
@@ -15,11 +15,11 @@ const SearchResults = ({events}) => {
         <div className="searchResults">
             {events.length ?
             events.map( (event) => {
-                return <EventCard key={event.timestamp+event.host} userType='spectatorCard' eventData={event} profileId={profile.id}/>
+                return <VoteCard key={event.timestamp+event.host} userType='spectatorCard' eventData={event} profileId={profile.id}/>
             })
             :
             <div className="noResults">
-                <p>Welcome to Cherry Rate App!</p>
+                <p>Welcome to Simple Survey!</p>
                 <p>You can search for the <span className="vote">Most Recent</span> surveys to submit your vote</p>
                 <p>Or</p>
                 <p>If you know the <span className="vote">identifier</span>, search for a specific survey</p>

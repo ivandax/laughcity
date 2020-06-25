@@ -1,0 +1,70 @@
+@import '../../style/variables.scss';
+@import '../../style/mixins.scss';
+
+.voteCard{
+    @include flex-complete($direction: column, $justify: flex-start, $align: flex-start);
+
+    width: 95%;
+    background-color: $secondary;
+    margin: 4px;
+    border-radius: 8px;
+    color: white;
+
+    @media only screen and (min-width: 500px){
+        width: 500px;
+    }
+
+    &.spectatorCard{
+        background-color: $main;
+    }
+
+    div.title{
+        @include flex-complete($direction: row, $justify: space-between, $align: flex-start);
+        width: 100%;
+
+        div{
+            padding: 8px;
+        }
+
+        div.date{
+            min-width: 80px;
+            font-size: 10px;
+        }
+    }
+
+    div.participants{
+        width: 95%;
+    }
+
+    >button{
+        padding: 4px;
+        border: none;
+        border-radius: 4px;
+        align-self: flex-end;
+        margin: 4px;
+        margin-top: 4px;
+        color:white;
+        background-color: $deepblue;
+        font-size: 12px;
+        min-width: 100px;
+
+        &.eventClose{
+            background-color: gray;
+        }
+    }
+}
+
+.noShow{
+    display:none;
+}
+
+.message{
+    padding: 4px;
+    margin: 0 auto;
+    font-size: 12px;
+}
+
+.identifier{
+    align-self: flex-end;
+    margin: 8px;
+}

@@ -2,15 +2,15 @@
 const validateAll = (formData) => {
     const {title,date,participants} = formData;
     if(title){
-        if(date){
+        //if(date){
             if(participants.length){
                 return true; //success case, otherwise returns a [false, "message"] array
             } else{
                 return [false, "At least one participant must be added."]
             }
-        } else{
-            return [false, "A date must be selected."]
-        }
+        // } else{
+        //     return [false, "A date must be selected."]
+        // }
     } else{
         return [false, "Title must be provided."]
     }
